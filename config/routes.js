@@ -32,9 +32,9 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  }
+  'post /api/v1/auth/login': 'AuthController.index',
+
+  'get /api/v1/auth/user': 'AuthController.getUser',
 
   /***************************************************************************
   *                                                                          *
