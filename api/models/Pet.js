@@ -26,6 +26,10 @@ module.exports = {
     },
     size: {
       model: 'size'
-    }
+    },
+    photos: {
+      collection: 'image',
+      via: 'pet'
+    },
   }
 };

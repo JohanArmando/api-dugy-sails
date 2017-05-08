@@ -20,7 +20,8 @@ module.exports = {
       type: 'string'
     },
     logo: {
-      type: 'longtext'
+      model: 'image',
+      defaultsTo: 1
     },
     subscriptions: {
       collection: 'subscription',

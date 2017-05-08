@@ -4,8 +4,7 @@
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
- var bcrypt = require('bcrypt');
- var fs = require('fs');
+ var bcrypt  = require('bcrypt');
 
 module.exports = {
   schema: true,
@@ -29,11 +28,12 @@ module.exports = {
     documentation: {
       type: 'string'
     },
-    avatar_url: {
-      type: 'string'
-    },
     role: {
       model: 'role'
+    },
+    avatar:{
+      model: 'image',
+      defaultsTo: 1
     },
     pets: {
       collection: 'pet',
@@ -50,7 +50,6 @@ module.exports = {
     toJSON: function () {
       var obj = this.toObject();
       delete obj.encryptedPassword;
-      obj.avatar_url = sails.config.urls.url_local + obj.avatar_url;
       return obj;
     }
   },
@@ -63,16 +62,7 @@ module.exports = {
         if (values.avatar == null) {
           return next(err);
         }
-        var buff = new Buffer(values.avatar.replace(/^data:image\/(png|gif|jpeg);base64,/,''), 'base64');
-        fs.writeFile('.tmp/public/avatars/'+values.email+'_avatar.png', buff, function (err) {
-          if(err) {
-              sails.log(err)
-              next();
-          }
-          values.avatar_url = '/avatars/' + values.email+'_avatar.png';
-           sails.log("The file was saved!");
-           next();
-        });
+        next();
       });
     });
   },

@@ -13,12 +13,12 @@ module.exports = {
     if (!email || !password) {
       return res.json(401, {err: 'email and password required'});
     }
-
-    User.findOne({email: email}, function (err, user) {
+    User.findOne({email: email})
+    .populate(['role', 'avatar'])
+    .then(user => {
       if (!user) {
-        return res.json(401, {err: 'invalid email or password'});
+        return res.json(401, {err: 'email is incorrect'});
       }
-
       User.comparePassword(password, user, function (err, valid) {
         if (err) {
           return res.json(403, {err: 'forbidden'});
@@ -34,6 +34,9 @@ module.exports = {
         }
       });
     })
+    .catch(()=>{
+      return res.json(401, {err: 'error database'});
+    });
   },
   getUSer: function (req, res) {
     res.json({

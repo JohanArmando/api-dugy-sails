@@ -12,6 +12,9 @@ module.exports = {
       type: 'string',
       required: true
     },
+    description: {
+      type: 'string'
+    },
     pets: {
       collection: 'pet',
       via: 'race'
