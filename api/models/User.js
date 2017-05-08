@@ -59,10 +59,17 @@ module.exports = {
       bcrypt.hash(values.password, salt, function (err, hash) {
         if(err) return next(err);
         values.encryptedPassword = hash;
-        if (values.avatar == null) {
-          return next(err);
+
+        if (values.role == null) {
+          Role.findOne({slug: 'client'})
+          .then(role => {
+            values.role = role.id;
+            next();
+          })
+        } else {
+          next();
         }
-        next();
+
       });
     });
   },

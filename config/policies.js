@@ -57,6 +57,10 @@ module.exports.policies = {
 
   'AuthController': {
     'index': true, // We dont need authorization here, allowing public access
+  },
+
+  'PlanController': {
+    '*': true
   }
 
 };

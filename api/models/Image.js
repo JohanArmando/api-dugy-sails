@@ -9,7 +9,7 @@ var easyimg = require('easyimage');
 const uuidV4 = require('uuid/v4');
 
 module.exports = {
-
+  schema: true,
   attributes: {
     thumbnail: {
       type: 'string'
@@ -30,7 +30,7 @@ module.exports = {
         delete obj.pet;
       }
       obj.thumbnail = sails.config.urls.url_local + obj.thumbnail;
-      obj.original = sails.config.urls.url_local + obj.original;
+      obj.original  = sails.config.urls.url_local + obj.original;
       return obj;
     }
   },
