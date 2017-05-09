@@ -60,7 +60,7 @@ module.exports.policies = {
   },
 
   'PlanController': {
-    '*': true
+    'index': true
   }
 
 };
