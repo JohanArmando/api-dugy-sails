@@ -48,6 +48,14 @@ module.exports.connections = {
   //   database: 'api-dugy-sails' //optional
   // },
 
+  productionMysql: {
+    adapter: 'sails-mysql',
+    host: 'localhost',
+    user: 'root', //optional
+    password: 'maxcorp2015++', //optional
+    database: 'api_dugy' //optional
+  },
+
   /***************************************************************************
   *                                                                          *
   * MongoDB is the leading NoSQL database.                                   *
