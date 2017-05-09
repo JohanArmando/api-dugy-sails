@@ -4,7 +4,7 @@
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
- var bcrypt  = require('bcrypt');
+var bcrypt  = require('bcrypt-nodejs');
 
 module.exports = {
   schema: true,
@@ -56,7 +56,7 @@ module.exports = {
   beforeCreate : function (values, next) {
    bcrypt.genSalt(10, function (err, salt) {
       if(err) return next(err);
-      bcrypt.hash(values.password, salt, function (err, hash) {
+      bcrypt.hash(values.password, salt, null, function (err, hash) {
         if(err) return next(err);
         values.encryptedPassword = hash;
 

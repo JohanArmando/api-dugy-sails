@@ -6,6 +6,7 @@
   "keywords": [],
   "dependencies": {
     "bcrypt": "^1.0.2",
+    "bcrypt-nodejs": "0.0.3",
     "easyimage": "^2.1.0",
     "include-all": "^1.0.0",
     "jsonwebtoken": "^7.4.0",
