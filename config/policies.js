@@ -60,12 +60,7 @@ module.exports.policies = {
   },
 
   'PlanController': {
-    'find': true,
-    'findOne': true,
-    'populate': true,
-    'create':  'isAuthorized',
-    'update':  'isAuthorized',
-    'destroy': 'isAuthorized'
+    '*': true
   }
 
 };
