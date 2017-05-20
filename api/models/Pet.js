@@ -31,5 +31,9 @@ module.exports = {
       collection: 'image',
       via: 'pet'
     },
+    services: {
+      collection: 'service',
+      via: 'pets'
+    }
   }
 };

@@ -43,6 +43,10 @@ module.exports = {
       collection: 'subscription',
       via: 'user'
     },
+    walks: {
+      collection: 'service',
+      via: 'walker'
+    },
     encryptedPassword: {
       type: 'string'
     },
