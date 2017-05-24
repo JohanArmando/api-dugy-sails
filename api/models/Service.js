@@ -1,39 +1,28 @@
 /**
- * Pet.js
+ * Service.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
 module.exports = {
-  schema: true,
+
   attributes: {
-    name: {
-      type: 'string',
+    date: {
+      type: 'date',
       required: true
     },
-    comments: {
-      type: 'string'
-    },
-    born_date: {
-      type: 'date'
-    },
-    owner: {
+    walker: {
       model: 'user'
     },
-    race: {
-      model: 'race'
-    },
-    size: {
-      model: 'size'
+    pets: {
+      collection: 'pet',
+      via: 'services',
+      dominant: true
     },
     photos: {
       collection: 'image',
-      via: 'pet'
+      via: 'service'
     },
-    services: {
-      collection: 'service',
-      via: 'pets'
-    }
   }
 };
