@@ -13,11 +13,11 @@ var img = 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAQFBAYFBQ
 module.exports.bootstrap = function(cb) {
   User.find().then(users => {
     if (users.length == 0) {
-      Race.create({name:'Pastor Aleman'}).then((Rpa) => {
-        Race.create({name:'Labrador'}).then((Rla) => {
-          Race.create({name:'Pitbull'}).then((Rpi) => {
-            Race.create({name:'San Bernardo'}).then((Rsa) => {
-              Race.create({name:'Chao chao'}).then((Rcc) => {
+      Race.create({name:'Pastor Aleman', description: ''}).then((Rpa) => {
+        Race.create({name:'Labrador', description: ''}).then((Rla) => {
+          Race.create({name:'Pitbull', description: ''}).then((Rpi) => {
+            Race.create({name:'San Bernardo', description: ''}).then((Rsa) => {
+              Race.create({name:'Chao chao', description: ''}).then((Rcc) => {
                 Size.create({slug:'small',name:'s'}).then((Ss) => {
                   Size.create({slug:'medium',name:'m'}).then((Sm) => {
                     Size.create({slug:'large',name:'l'}).then((Sl) => {
@@ -27,7 +27,13 @@ module.exports.bootstrap = function(cb) {
                       });
                       Role.create({name: 'Administrador', slug: 'admin', description: ''})
                       .then(role => {
-
+                        User.create({name:'Mario',last_name: 'Diaz',email: 'admin@gmail.com',password: '123456', role: role.id}).then((user) => {
+                          user.pets.add({ race: Rpa.id, size: Ss.id, born_date: '2016/05/05', name: 'Traki', photos: [{ avatar: img, name: 'happy-pet.jpj'},{ avatar: img, name: 'happy-pet2.jpj'}] });
+                          user.pets.add({ race: Rla.id, size: Sl.id, born_date: '2016/05/05', name: 'Pucho', photos: [{ avatar: img, name: 'happy-pet.jpj'},{ avatar: img, name: 'happy-pet2.jpj'}] });
+                          user.pets.add({ race: Rpi.id, size: Sl.id, born_date: '2016/05/05', name: 'Carta', photos: [{ avatar: img, name: 'happy-pet.jpj'},{ avatar: img, name: 'happy-pet2.jpj'}] });
+                          user.pets.add({ race: Rsa.id, size: Ss.id, born_date: '2016/05/05', name: 'Cosi',  photos: [{ avatar: img, name: 'happy-pet.jpj'},{ avatar: img, name: 'happy-pet2.jpj'}] });
+                          user.save();
+                        });
                       });
                       Image.create({name: 'default.jpg', avatar: img })
                       .then(image => {
@@ -40,7 +46,7 @@ module.exports.bootstrap = function(cb) {
                             user.pets.add({ race: Rsa.id, size: Sm.id, born_date: '2016/05/05', name: 'Paco', photos: [{ avatar: img, name: 'happy-pet.jpj'},{ avatar: img, name: 'happy-pet2.jpj'}] });
                             user.save();
                           });
-                          User.create({name:'Mario',last_name: 'Diaz',email: 'mariodiaz@gmail.com',password: '123456', role: role.id}).then((user) => {
+                          User.create({name:'Mario',last_name: 'Diaz',email: 'admin@gmail.com',password: '123456', role: role.id}).then((user) => {
                             user.pets.add({ race: Rpa.id, size: Ss.id, born_date: '2016/05/05', name: 'Traki', photos: [{ avatar: img, name: 'happy-pet.jpj'},{ avatar: img, name: 'happy-pet2.jpj'}] });
                             user.pets.add({ race: Rla.id, size: Sl.id, born_date: '2016/05/05', name: 'Pucho', photos: [{ avatar: img, name: 'happy-pet.jpj'},{ avatar: img, name: 'happy-pet2.jpj'}] });
                             user.pets.add({ race: Rpi.id, size: Sl.id, born_date: '2016/05/05', name: 'Carta', photos: [{ avatar: img, name: 'happy-pet.jpj'},{ avatar: img, name: 'happy-pet2.jpj'}] });
