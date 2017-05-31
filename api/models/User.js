@@ -43,6 +43,10 @@ module.exports = {
       collection: 'subscription',
       via: 'user'
     },
+    services: {
+      collection: 'service',
+      via: 'client'
+    },
     walks: {
       collection: 'service',
       via: 'walker'

@@ -8,8 +8,20 @@
 module.exports = {
 
   attributes: {
+    address: {
+      type: 'string',
+      required: true
+    },
     date: {
-      type: 'date',
+      type: 'datetime',
+      required: true
+    },
+    hours: {
+      type: 'integer',
+      required: true
+    },
+    client: {
+      model: 'user',
       required: true
     },
     walker: {
