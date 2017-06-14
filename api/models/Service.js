@@ -12,6 +12,14 @@ module.exports = {
       type: 'string',
       required: true
     },
+    latitude: {
+      type: 'string',
+      required: true
+    },
+    longitude: {
+      type: 'string',
+      required: true
+    },
     date: {
       type: 'datetime',
       required: true
