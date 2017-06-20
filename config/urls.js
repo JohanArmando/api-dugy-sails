@@ -1,6 +1,6 @@
 module.exports.urls = {
 
-  url_local: 'http://localhost:1337',
+  url_local: 'http://api.dugy.co',
 
   url_productions: ''
 

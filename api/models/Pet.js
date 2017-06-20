@@ -15,6 +15,10 @@ module.exports = {
     comments: {
       type: 'string'
     },
+    avatar:{
+      model: 'image',
+      defaultsTo: 1
+    },
     gender: {
       type: 'integer'
     },

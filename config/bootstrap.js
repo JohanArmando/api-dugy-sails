@@ -21,9 +21,9 @@ module.exports.bootstrap = function(cb) {
           Race.create({name:'Pitbull', description: ''}).then((Rpi) => {
             Race.create({name:'San Bernardo', description: ''}).then((Rsa) => {
               Race.create({name:'Chao chao', description: ''}).then((Rcc) => {
-                Size.create({slug:'small',name:'s'}).then((Ss) => {
-                  Size.create({slug:'medium',name:'m'}).then((Sm) => {
-                    Size.create({slug:'large',name:'l'}).then((Sl) => {
+                Size.create({slug:'small',name:'Pequeño'}).then((Ss) => {
+                  Size.create({slug:'medium',name:'Mediano'}).then((Sm) => {
+                    Size.create({slug:'large',name:'Grande'}).then((Sl) => {
                       Role.create({name: 'Super Usuario', slug: 'superuser', description: ''})
                       .then(role => {
 
