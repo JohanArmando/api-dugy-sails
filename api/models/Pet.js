@@ -31,6 +31,10 @@ module.exports = {
       collection: 'image',
       via: 'pet'
     },
+    gender: {
+      type: 'integer',
+      required: true
+    },
     services: {
       collection: 'service',
       via: 'pets'
