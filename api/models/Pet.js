@@ -15,6 +15,9 @@ module.exports = {
     comments: {
       type: 'string'
     },
+    gender: {
+      type: 'integer'
+    },
     born_date: {
       type: 'date'
     },
@@ -30,10 +33,6 @@ module.exports = {
     photos: {
       collection: 'image',
       via: 'pet'
-    },
-    gender: {
-      type: 'integer',
-      required: true
     },
     services: {
       collection: 'service',
