@@ -73,39 +73,5 @@ module.exports = {
         }
       );
     });
-  },
-  beforeUpdate : function (values, next) {
-    var uuid = uuidV4();
-    if (values.avatar == null) {
-      sails.log('sin foto');
-    }
-    var dir = '.tmp/public/images';
-    if (!fs.existsSync(dir)){
-      if (!fs.existsSync('.tmp/public')){
-        fs.mkdirSync('.tmp/public');
-      }
-      fs.mkdirSync('.tmp/public/images');
-    }
-    fs.mkdirSync('.tmp/public/images/' + uuid);
-    var buff = new Buffer(values.avatar.replace(/^data:image\/(png|gif|jpeg);base64,/,''), 'base64');
-    fs.writeFile('.tmp/public/images/'+ uuid +'/'+values.name, buff, function (err) {
-      if(err) {
-          sails.log(err)
-          next();
-      }
-      values.original = '/images/' + uuid +'/' + values.name;
-      easyimg.thumbnail({
-           src:'.tmp/public/images/' + uuid +'/' +values.name, dst:'.tmp/public/images/'+uuid+'/thumbnail-'+values.name,
-           width:400, height:400
-        }).then(
-        function(image) {
-          values.thumbnail = '/images/'+ uuid +'/thumbnail-'+values.name;
-          next();
-        },
-        function (err) {
-          console.log(err);
-        }
-      );
-    });
-  },
+  }
 };
