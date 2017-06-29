@@ -17,7 +17,10 @@ module.exports = {
       required: true
     },
     expiration_days: {
-      type: 'string'
+      type: 'integer'
+    },
+    walks_number: {
+      type: 'integer'
     },
     logo: {
       model: 'image',

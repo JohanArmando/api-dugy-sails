@@ -14,7 +14,7 @@ module.exports = {
       return res.json(401, {err: 'email and password required'});
     }
     User.findOne({email: email})
-    .populate(['role', 'avatar'])
+    .populate(['role', 'avatar', 'subscriptions'])
     .then(user => {
       if (!user) {
         return res.json(401, {err: 'email is incorrect'});
@@ -27,14 +27,27 @@ module.exports = {
         if (!valid) {
           return res.json(401, {err: 'invalid email or password'});
         } else {
-          res.json({
-            user: user,
-            token: jwToken.issue({id : user.id })
-          });
+          Subscription.findOne({
+            user: user.id,
+            status: true
+          })
+          .populate('plan')
+          .then(subscription => {
+            if (!subscription) {
+              user.subscription_active = null;
+            } else {
+              user.subscription_active = subscription;
+            }
+            res.json({
+              user: user,
+              token: jwToken.issue({id : user.id })
+            });
+          })
+
         }
       });
     })
-    .catch(()=>{
+    .catch(() => {
       return res.json(401, {err: 'error database'});
     });
   },
