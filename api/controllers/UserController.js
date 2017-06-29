@@ -22,8 +22,9 @@ module.exports = {
       // If user created successfuly we return user and token as response
       if (user) {
 				User.findOne({email: user.email})
-		    .populate(['role', 'avatar'])
+		    .populate(['role', 'avatar', 'subscriptions'])
 		    .then(user => {
+					user.subscription_active = null;
 					res.json(200, {user: user, token: jwToken.issue({id: user.id})});
 		    })
       }

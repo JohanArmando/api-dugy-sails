@@ -52,9 +52,22 @@ module.exports = {
     });
   },
   getUSer: function (req, res) {
-    res.json({
-      user: req.user
-    });
+    Subscription.findOne({
+      user: req.user.id,
+      status: true
+    })
+    .populate('plan')
+    .then(subscription => {
+      if (!subscription) {
+        req.user.subscription_active = null;
+      } else {
+        req.user.subscription_active = subscription;
+      }
+      res.json({
+        user: req.user,
+        token: jwToken.issue({id : req.user.id })
+      });
+    })
   }
 
 };

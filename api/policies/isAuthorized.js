@@ -31,7 +31,7 @@ module.exports = function (req, res, next) {
   jwToken.verify(token, function (err, token) {
     if (err) return res.json(401, {err: 'Invalid Token!'});
     User.findOne(token.id)
-    .populate(['role', 'avatar'])
+    .populate(['role', 'avatar', 'subscriptions'])
     .then(user => {
       if (!user) {
         return res.json(401, {err: 'user not find'});
